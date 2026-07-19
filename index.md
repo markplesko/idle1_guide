@@ -91,7 +91,7 @@ Here are the cumulative values charted as a ratio compared to the default settin
 
 Tier 6 under the high setting might be a mistake.
 
-![Levelup Comparison](charts/levelup_cumul_reldef.png)
+<img src="charts/levelup_cumul_reldef.png" alt="Levelup Comparison" width="550" height="330">
 
 The high fixed costs setting adds a 5x multiplier to C8 and 8x to C9.  The K factor will have an impact but is currently disabled in the game.
 
