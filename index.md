@@ -187,6 +187,8 @@ For each world and color, we also need a starting point.  C1 is special.  It see
 | Crazy  |  4 |  6  |    9 |       6 |  10 |   3 |
 | Evil   |  8 | 12  |   18 |      12 |  20 |   6 |
 
+7/19/26
+
 Here are the unlock costs for each cost type under easy difficulty.  Note that 'e' here means scientific notation, not the in-game notation.
 
 |  |      W1 |     Std |    High | Plateau |     Log |     Exp |
@@ -216,3 +218,31 @@ For other cost settings, the unlock values can probably still be used as a "cost
 Here is a visualization of the costs relative to "standard":
 
 <img src="charts/unlock_relstd.png" alt="Unlock Comparison (easy)" width="550" height="330">
+
+For other difficulty levels, use the previous chart for C1.  For other colors, use multipliers on the easy values.  The multipliers vary by color.
+
+For normal, C2-C5 are 6x, and C6-C9 and M1-M7 are 20x.  Except: exponential M7 is 22.22x and W1 M7 is 26.5x.
+
+For hard, C2 is 6.7x, C3-C5 are 21x, C6-C9 are 160x, M1-M5 are around 197x, M6 is 1970x, and M7 is 23500x.  Except: logarithmic M6 is 19700x, and again for M7, exponential (26100x) and logarithmic (31100x) are larger.
+
+For crazy, C2 is 7.5x, C3-C5 are 87x, C6-C9 are 1700x, M1-M5 are 2650x, M6 is 26500x, and M7 is 75Mx.  Except: plateau M7 is 750Mx, and again for M7, exponential (81Mx) and W1 (104Mx) are larger.
+
+Evil has different boosts for each color, which is why each color and machine is _much_ harder to reach compared to other levels.  "e" representation normal scientific notation, not in-game "e" notation.
+
+|  | Cost Mult | Exceptions |
+|--| --------: | :--------- |
+|C2|      22.8 |
+|C3|      3500 |
+|C4|      5200 |
+|C5|      8600 | plateau and log are 86000
+|C6|     25500 |
+|C7|     42500 |
+|C8|       68M |
+|C9|   1.36e15 | W1 is 1.36e14
+|M1|      4e16 | exp is 4e17, plat/log are 4e25
+|M2|      8e26 | log/exp are 8e27
+|M3|    1.6e36 | log/exp are 1.6e37
+|M4|    5.3e46 |
+|M5|    2.1e49 |
+|M6|    1.3e61 |
+|M7|    7.5e86 | W1 is 1e87, plat is 7.5e87
