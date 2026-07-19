@@ -65,7 +65,7 @@ First, prestige values (same for all difficulties?)  Note that the curves start 
 
 Each color has a base value for earn, multiplied by the number of that color that has been purchased.  A multiplier comes from the tier of purchases (like 10-25-50).  The different multiplier ranges only change when the tier changes, not the multiplier itself.  Here are the values, many rounded:
 
-|    |   Low |   Def |    Hi |
+|    |   Low |   Def |  High |
 | -: | ----: | ----: | ----: |
 | T1 |     3 |     3 |     3 |
 | T2 |     8 |     6 |  5.33 |
@@ -77,7 +77,7 @@ Each color has a base value for earn, multiplied by the number of that color tha
 
 More interesting, perhaps, are the cumulative multipliers (using in-game e notation, not scientific):
 
-|    |   Low |   Def |    Hi |
+|    |   Low |   Def |  High |
 | -: | ----: | ----: | ----: |
 | T1 |     3 |     3 |     3 |
 | T2 |    24 |    18 |    16 |
@@ -179,10 +179,10 @@ So basically, each color is 2.1% worse than the one before it _except_ that C1 t
 
 For each world and color, we also need a starting point.  C1 is special.  It seems to have values assigned for each level rather than using multipliers across world settings.  The table below gives the cost for a hypothetical purchase number zero.  Therefore, the initial purchase in the game (number two) is found by applying the above multiplier twice.
 
-|        | W1 | Std | Hi | Pl | Log | Exp |
-| :----- | -: | --: | -: | -: | --: | --: |
-| Easy   |  2 |  2  |  2 |  2 |   2 |   2 |
-| Normal |  3 |  4  |  6 |  4 |   7 |   2 |
-| Hard   |  3 |  4  |  7 |  4 |   8 |   2 |
-| Crazy  |  4 |  6  |  9 |  6 |  10 |   3 |
-| Evil   |  8 | 12  | 18 | 12 |  20 |   6 |
+|        | W1 | Std | High | Plateau | Log | Exp |
+| :----- | -: | --: | ---: | ------: | --: | --: |
+| Easy   |  2 |  2  |    2 |       2 |   2 |   2 |
+| Normal |  3 |  4  |    6 |       4 |   7 |   2 |
+| Hard   |  3 |  4  |    7 |       4 |   8 |   2 |
+| Crazy  |  4 |  6  |    9 |       6 |  10 |   3 |
+| Evil   |  8 | 12  |   18 |      12 |  20 |   6 |
