@@ -186,3 +186,33 @@ For each world and color, we also need a starting point.  C1 is special.  It see
 | Hard   |  3 |  4  |    7 |       4 |   8 |   2 |
 | Crazy  |  4 |  6  |    9 |       6 |  10 |   3 |
 | Evil   |  8 | 12  |   18 |      12 |  20 |   6 |
+
+Here are the unlock costs for each cost type under easy difficulty.  Note that 'e' here means scientific notation, not the in-game notation.
+
+|  |      W1 |     Std |    High | Plateau |     Log |     Exp |
+|- | ------: | ------: | ------: | ------: | ------: | ------: |
+|C2|      41 |      40 |      50 |      46 |      86 |      14 |
+|C3|     157 |     199 |     398 |     141 |    1430 |      48 |
+|C4|    398k |    540k |   7.39M |   5.73M |   51.2M |    5350 |
+|C5|   66.9M |    269M |    684M |   8.46B |   17.4B |   2.08M |
+|C6|    6.4B | 1.11e11 | 2.11e11 | 9.03e13 | 4.32e13 |    217M |
+|C7| 1.1e13  | 5.18e14 | 4.02e15 | 1.52e18 | 8.4e16  | 3.86e11 |
+|C8| 7.86e16 | 4.98e17 | 3.48e18 | 1.1e21  | 9.25e19 | 2.92e14 |
+|C9| 1.84e20 | 1.49e20 | 3.99e20 | 1.1e25  | 6.69e21 | 2.55e17 |
+|M1| 8.12e23 | 2.58e23 | 4.08e23 | 3.91e29 | 3.07e25 | 2.81e19 |
+|M2| 1.19e25 | 1.31e26 | 2.24e27 | 3.35e30 | 8.61e27 | 3.84e23 |
+|M3| 3.6e26  | 5.04e28 | 1e29    | 1.31e31 | 1.43e30 | 6.35e26 |
+|M4| 6.06e27 | 1.44e31 | 2.66e31 | 2.2e32  | 1.36e32 | 1.26e30 |
+|M5| 2.36e31 | 2.98e33 | 1.24e34 | 1.54e33 | 7.26e32 | 2.92e33 |
+|M6| 5.88e34 | 4.38e35 | 2.42e36 | 4.29e34 | 2.1e35  | 7.91e36 |
+|M7| 1.23e40 | 4.48e38 | 6.34e39 | 4.6e35  | 3.24e37 | 5.58e40 |
+
+Starting with standard, to calculate other costs, use the unlock cost as a hypothetical purchase number zero.  Therefore, the second purchase for a color has a "double multiplier" applied to it.  The third and following purchases use the normal multiplier for that color.
+
+However, the numbers for C2 standard don't quite work out this way.  Instead, use $47$ as the cost for a hypothetical purchase number one and go from there.
+
+For other cost settings, the unlock values can probably still be used as a "cost zero".  However, C2 is still strange, and the best method so far is to take $47$ as "cost one" and multiply it by the difference seen.  Therefore, for "High", use $47 * 1.25$ for "cost one".
+
+Here is a visualization of the costs relative to "standard":
+
+<img src="charts/unlock_relstd.png" alt="Unlock Comparison (easy)" width="550" height="330">
