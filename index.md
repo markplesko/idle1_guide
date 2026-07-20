@@ -65,27 +65,27 @@ First, prestige values (same for all difficulties?)  Note that the curves start 
 
 Each color has a base value for earn, multiplied by the number of that color that has been purchased.  A multiplier comes from the tier of purchases (like 10-25-50).  The different multiplier ranges only change when the tier changes, not the multiplier itself.  Here are the values, many rounded:
 
-|    |   Low |   Def |  High |
-| -: | ----: | ----: | ----: |
-| T1 |     3 |     3 |     3 |
-| T2 |     8 |     6 |  5.33 |
-| T3 |    25 |    22 |  18.5 |
-| T4 |   133 |   150 |   167 |
-| T5 |  1260 |  1680 |  2025 |
-| T6 | 21800 | 29800 | 19800 |
-| T7 | 45900 | 47000 |  121k |
+|Tier| 10-25 | 10-20 | 10-50 |   Low |   Def |  High |
+| -: | ----: | ----: | ----: | ----: | ----: | ----: |
+| T1 |   10  |   10  |   10  |     3 |     3 |     3 |
+| T2 |   25  |   20  |   50  |     8 |     6 |  5.33 |
+| T3 |   50  |   30  |  100  |    25 |    22 |  18.5 |
+| T4 |  100  |   60  |  150  |   133 |   150 |   167 |
+| T5 |  200  |  120  |  200  |  1260 |  1680 |  2025 |
+| T6 |  300  |  240  |  250  | 21800 | 29800 | 19800 |
+| T7 |  400  |  480  |  300  | 45900 | 47000 |  121k |
 
 More interesting, perhaps, are the cumulative multipliers (using in-game e notation, not scientific):
 
-|    |   Low |   Def |  High |
-| -: | ----: | ----: | ----: |
-| T1 |     3 |     3 |     3 |
-| T2 |    24 |    18 |    16 |
-| T3 |   600 |   396 |   296 |
-| T4 |   79k |   59k |   49k |
-| T5 |  100M |  100M |  100M |
-| T6 |  2.2T |    3T |    2T |
-| T7 | 100e1 | 140e1 | 240e1 |
+|Tier| 10-25 | 10-20 | 10-50 |   Low |   Def |  High |
+| -: | ----: | ----: | ----: | ----: | ----: | ----: |
+| T1 |   10  |   10  |   10  |     3 |     3 |     3 |
+| T2 |   25  |   20  |   50  |    24 |    18 |    16 |
+| T3 |   50  |   30  |  100  |   600 |   396 |   296 |
+| T4 |  100  |   60  |  150  |   79k |   59k |   49k |
+| T5 |  200  |  120  |  200  |  100M |  100M |  100M |
+| T6 |  300  |  240  |  250  |  2.2T |    3T |    2T |
+| T7 |  400  |  480  |  300  | 100e1 | 140e1 | 240e1 |
 
 Here are the cumulative values charted as a ratio compared to the default setting.  Like the prestige values, low and high start backwards from their names, all line up at the 5th upgrade, and then end up as their names suggest.
 
@@ -223,7 +223,7 @@ For other difficulty levels, use the previous chart for C1.  For other colors, u
 
 For normal, C2-C5 are 6x, and C6-C9 and M1-M7 are 20x.  Except: exponential M7 is 22.22x and W1 M7 is 26.5x.
 
-For hard, C2 is 6.7x, C3-C5 are 21x, C6-C9 are 160x, M1-M5 are around 197x, M6 is 1970x, and M7 is 23500x.  Except: logarithmic M6 is 19700x, and again for M7, exponential (26100x) and logarithmic (31100x) are larger.
+For hard, C2 is 6.7x, C3-C5 are 21x, C6-C9 are 160x, M1-M5 are around 197x, M6 is 1970x, and M7 is 23500x.  Except: logarithmic M6 is 19700x, plateau W7 is 25600x, and again for M7, exponential (26100x) and W1 (31100x) are larger.
 
 For crazy, C2 is 7.5x, C3-C5 are 87x, C6-C9 are 1700x, M1-M5 are 2650x, M6 is 26500x, and M7 is 75Mx.  Except: plateau M7 is 750Mx, and again for M7, exponential (81Mx) and W1 (104Mx) are larger.
 
