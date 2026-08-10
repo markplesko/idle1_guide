@@ -5,7 +5,7 @@ layout: default
 
 Initially, this just contains copies of posts from the idle1 discord.
 
-6/2/26
+### 6/2/26
 
 (formula for constant income boost from EX)
 
@@ -15,7 +15,7 @@ This means that if you beat w1-w7 with no earned pow, you get 0.05 since you hav
 
 (except, the 0.14 to 0.15 EX transition appears to happen at 22.5 POW rather than 22)
 
-6/11/26
+### 6/11/26
 
 I just measured 20 color 1 completions:
 - without manual: 87s
@@ -23,11 +23,11 @@ I just measured 20 color 1 completions:
 - with manual (held): 47s
 - with manual (tapped): 53s
 
-The in-game profit reporting looks incorrect to me.  I think it’s using 4s (rather than ~4.35) for the base.  It then shows 7x speedup rather than not quite 2x.  It also omits the small (1-8), fixed bonus due to EX that we see.
+The in-game profit reporting looks incorrect to me.  I think it’s using 4s (rather than ~4.35) for the base.  It then shows 7x speedup rather than not quite 2x.  It also omits the small (1+), fixed bonus due to EX that we see.
 
 Time bomb on C1 takes about 25s.  So it’s 5-6x slower.  Income goes from 4 to 576, which 144x.  (Manual cuts the time in about half.)
 
-6/12/26
+### 6/12/26
 
 I’ve been collecting data on completion rounds and times, and I’m convinced that with enough EX, short EX resets are far more efficient.  There are three main factors for this:
 - The initial reset amount (0.05) is bigger than incremental gains (0.01 for 2 POW).
@@ -36,13 +36,13 @@ I’ve been collecting data on completion rounds and times, and I’m convinced 
 
 Putting it together, 0.05 EX is 100 W1s, and this can’t get much faster than 3 hours.  If a short reset takes less than this, short wins.  The question then becomes how much EX is needed for this to happen.
 
-6/26/26
+### 6/26/26
 
 For a given earn_prestige value, your multiplier compared to before will be approximately
 
 $$\text{earn}^{new - old}$$
 
-7/2/26
+### 7/2/26
 
 I’ve been collecting a bunch of other data that I can start posting here.  Mostly this is for easy difficulty, but some things are unchanged and some have simple multipliers.  Corrections welcome!
 
@@ -97,7 +97,7 @@ The high fixed costs setting adds a 5x multiplier to C8 and 8x to C9.  The K fac
 
 The value is also multiplied by the number purchased of that color and the bonus from earn/speed/EX.
 
-7/3/26
+### 7/3/26
 
 We've been given that for earn:
 
@@ -121,7 +121,7 @@ Earn base values (rounded, in-game e notation):
 | C8 |    100T   |
 | C9 | 12.76e1   |
 
-7/8/26
+### 7/8/26
 
 The impact of the speed boost is more complicated.  Taking some times involves measurement error, and the upper colors are slow to wait for.  However, I believe the speed value follows the pattern for earn, and my guess is
 
@@ -149,7 +149,7 @@ I don't think this is the actual formula, but it is close for the values that I'
 
 When speed is maxed, the penalty is around 40% less than where it maxed for that color.  C1 is ~0.4, C5 is ~0.11, C8 is ~0.07.
 
-7/18/26
+### 7/18/26
 
 Some more game data:
 
@@ -187,7 +187,7 @@ For each world and color, we also need a starting point.  C1 is special.  It see
 | Crazy  |  4 |  6  |    9 |       6 |  10 |   3 |
 | Evil   |  8 | 12  |   18 |      12 |  20 |   6 |
 
-7/19/26
+### 7/19/26
 
 Here are the unlock costs for each cost type under easy difficulty.  Note that 'e' here means scientific notation, not the in-game notation.
 
@@ -246,3 +246,33 @@ Evil has different boosts for each color, which is why each color and machine is
 |M5|    2.1e49 |
 |M6|    1.3e61 |
 |M7|    7.5e86 | W1 is 1e87, plat is 7.5e87
+
+### 8/10/26
+
+EX provides a small fixed bonus to each color.  It increases as EX goes up but is not impacted by any multipliers.  It starts at 1 for each 0.5 EX, rounded up (so +1 for 0.05 to 0.50, +2 for 0.51 to 1.0, +3 for 1.01 to 1.5, and so on).  However, at 9.05 EX it gives an extra +2 instead of +1, so the bonus is +18 instead of +17.  After that, the increases occur on each half point of EX rather than after them, and the increases go up to +3.  In table form:
+
+| Displayed EX | Bonus |
+| -----------: | ----: |
+|         1.00 |     0 |
+|  1.05 - 1.50 |     1 |
+|  1.51 - 2.00 |     2 |
+|  2.01 - 2.50 |     3 |
+|          ... |   ... |
+|  7.51 - 8.00 |    14 |
+|  8.01 - 8.50 |    15 |
+|  8.51 - 9.00 |    16 |
+|  9.01 - 9.49 |    18 |
+|  9.50 - 9.99 |    21 |
+|       10.00+ |    24 |
+
+To be clear about the fixed nature of the bonus, here is what the income for each tick of C1 looks like (with no earn or speed bonuses).  10 is where the first levelup bonus appears (and is 3x):
+
+|    # C1 | 1 EX Income | 1.2 EX Income | 10 EX Income |
+| ------: | ----------: | ------------: | -----------: |
+|       1 |           4 |             5 |           28 |
+|       2 |           8 |             9 |           32 |
+|       3 |          12 |            13 |           36 |
+|     ... |         ... |           ... |          ... |
+|       9 |          36 |            37 |           60 |
+| (3x) 10 |         120 |           121 |          144 |
+|      11 |         132 |           133 |          156 |
