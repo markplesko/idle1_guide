@@ -276,3 +276,6 @@ To be clear about the fixed nature of the bonus, here is what the income for eac
 |       9 |          36 |            37 |           60 |
 | (3x) 10 |         120 |           121 |          144 |
 |      11 |         132 |           133 |          156 |
+
+The EX fixed bonus makes buying C1s faster.  We can describe this by
+writing the number of C1s after doing a "buy all" after each tick.  With no EX, W1 goes $1 \rightarrow 2 \rightarrow 3 \rightarrow 5 \rightarrow 8 \rightarrow 10$ (5 ticks).  After an initial small EX reset, it changes to $1 \rightarrow 2 \rightarrow 4 \rightarrow 6 \rightarrow 9 \rightarrow 11$.  The effect is minor as it still takes 5 ticks.  At 2.01 EX, it shortens to $1 \rightarrow 2 \rightarrow 4 \rightarrow 7 \rightarrow 10$ (4 ticks), which saves 4+ seconds.  At 5.01 EX, it shortens to $1 \rightarrow 3 \rightarrow 6 \rightarrow 10$ (3 ticks).  At 10 EX, it shortens to $1 \rightarrow 6 \rightarrow 10$ (2 ticks).
