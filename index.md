@@ -249,21 +249,24 @@ Evil has different boosts for each color, which is why each color and machine is
 
 ### 8/10/26
 
-EX provides a small fixed bonus to each color.  It increases as EX goes up but is not impacted by any multipliers.  It starts at 1 for each 0.5 EX, rounded up (so +1 for 0.05 to 0.50, +2 for 0.51 to 1.0, +3 for 1.01 to 1.5, and so on).  However, at 9.05 EX it gives an extra +2 instead of +1, so the bonus is +18 instead of +17.  After that, the increases occur on each half point of EX rather than after them, and the increases go up to +3.  In table form:
+EX provides a small fixed bonus to each color.  It increases as EX goes up but is not impacted by any multipliers.  It starts at 1 for each 0.5 EX, rounded up (so +1 for 0.05 to 0.50, +2 for 0.51 to 1.0, +3 for 1.01 to 1.5, and so on).  However, at 9.05 EX it gives an extra +2 instead of +1, so the bonus is +18 instead of +17.  After that, the increases occur on each half point of EX rather than after them, and the amounts of the increases continue to go up.  In table form:
 
-| Displayed EX | Bonus |
-| -----------: | ----: |
-|         1.00 |     0 |
-|  1.05 - 1.50 |     1 |
-|  1.51 - 2.00 |     2 |
-|  2.01 - 2.50 |     3 |
-|          ... |   ... |
-|  7.51 - 8.00 |    14 |
-|  8.01 - 8.50 |    15 |
-|  8.51 - 9.00 |    16 |
-|  9.01 - 9.49 |    18 |
-|  9.50 - 9.99 |    21 |
-|       10.00+ |    24 |
+|  Displayed EX | Bonus | Added |
+| ------------: | ----: | ----: |
+|          1.00 |    +0 |     - |
+|  1.05 -  1.50 |    +1 |    +1 |
+|  1.51 -  2.00 |    +2 |    +1 |
+|  2.01 -  2.50 |    +3 |    +1 |
+|           ... |   ... |   ... |
+|  7.51 -  8.00 |   +14 |    +1 |
+|  8.01 -  8.50 |   +15 |    +1 |
+|  8.51 -  9.00 |   +16 |    +1 |
+|  9.01 -  9.49 |   +18 |    +2 |
+|  9.50 -  9.99 |   +21 |    +3 |
+| 10.00 - 10.49 |   +24 |    +3 |
+| 10.50 - 10.99 |   +28 |    +4 |
+| 11.00 - 11.49 |   +33 |    +5 |
+| 11.50 -     ? |   +40 |    +7 |
 
 To be clear about the fixed nature of the bonus, here is what the income for each tick of C1 looks like (with no earn or speed bonuses).  10 is where the first levelup bonus appears (and is 3x):
 
@@ -279,3 +282,54 @@ To be clear about the fixed nature of the bonus, here is what the income for eac
 
 The EX fixed bonus makes buying C1s faster.  We can describe this by
 writing the number of C1s after doing a "buy all" after each tick.  With no EX, W1 goes $1 \rightarrow 2 \rightarrow 3 \rightarrow 5 \rightarrow 8 \rightarrow 10$ (5 ticks).  After an initial small EX reset, it changes to $1 \rightarrow 2 \rightarrow 4 \rightarrow 6 \rightarrow 9 \rightarrow 11$.  The effect is minor as it still takes 5 ticks.  At 2.01 EX, it shortens to $1 \rightarrow 2 \rightarrow 4 \rightarrow 7 \rightarrow 10$ (4 ticks), which saves 4+ seconds.  At 5.01 EX, it shortens to $1 \rightarrow 3 \rightarrow 6 \rightarrow 10$ (3 ticks).  At 10 EX, it shortens to $1 \rightarrow 6 \rightarrow 10$ (2 ticks).
+
+### 8/15/26
+
+Here is a chart that shows which EX values reduce the number of ticks required to get C1 to a count of 10.  See the table above explaining C1 costs to determine the base cost for a particular world.
+
+| Base |   EX | Bonus | Ticks | Path |
+| ---: | ---: | ----: | ----: | :--- |
+|    2 |    1 |    +0 |     4 | $1 \rightarrow 2 \rightarrow 4 \rightarrow 7 \rightarrow 11$ |
+|      | 1.51 |    +2 |     3 | $1 \rightarrow 3 \rightarrow 6 \rightarrow 10$ |
+|      | 6.01 |   +11 |     2 | $1 \rightarrow 5 \rightarrow 10$ |
+|      |    ? |   +41 |     1 | $1 \rightarrow 10$ |
+|    3 |    1 |    +0 |     5 | $1 \rightarrow 2 \rightarrow 3 \rightarrow 5 \rightarrow 8 \rightarrow 10$ |
+|      | 2.01 |    +3 |     4 | $1 \rightarrow 2 \rightarrow 4 \rightarrow 7 \rightarrow 10$ |
+|      | 5.01 |    +9 |     3 | $1 \rightarrow 3 \rightarrow 6 \rightarrow 10$ |
+|      |   10 |   +24 |     2 | $1 \rightarrow 6 \rightarrow 10$ |
+|      |    ? |   +63 |     1 | $1 \rightarrow 10$ |
+|    4 |    1 |    +0 |     7 | $1 \rightarrow 1 \rightarrow 2 \rightarrow 3 \rightarrow 5 \rightarrow 7 \rightarrow 9 \rightarrow 11$ |
+|      | 1.05 |    +1 |     6 | $1 \rightarrow 1 \rightarrow 2 \rightarrow 4 \rightarrow 6 \rightarrow 8 \rightarrow 10$ |
+|      | 2.51 |    +4 |     5 | $1 \rightarrow 2 \rightarrow 4 \rightarrow 6 \rightarrow 8 \rightarrow 10$ |
+|      | 4.51 |    +8 |     4 | $1 \rightarrow 3 \rightarrow 5 \rightarrow 8 \rightarrow 10$ |
+|      | 8.01 |   +15 |     3 | $1 \rightarrow 4 \rightarrow 7 \rightarrow 10$ |
+|      |   11 |   +33 |     2 | $1 \rightarrow 6 \rightarrow 10$ |
+|      |    ? |   +85 |     1 | $1 \rightarrow 10$ |
+
+For higher bases, only the EX values that shorten the path are given to keep the table smaller.
+
+| Base | Initial Ticks | EX cutoffs |      |      |      |      |      |
+| ---: | ------------: | ---------: | ---: | ---: | ---: | ---: | ---: |
+|    6 |            10 |       1.05 | 1.51 | 2.51 | 3.51 | 5.51 | 9.01 |
+|      |               |         11 |    ? |    ? |
+|    7 |            11 |       1.05 | 1.51 | 2.51 | 3.51 | 5.51 | 8.01 |
+|      |               |         10 |   12 |    ? |    ? |
+|    8 |            12 |       1.05 | 2.01 | 2.51 | 4.01 | 4.51 | 7.01 |
+|      |               |        9.5 | 10.5 |    ? |    ? |    ? |
+|    9 |            13 |       1.05 | 1.51 | 2.51 | 3.51 | 4.51 | 6.01 |
+|      |               |       8.51 |   10 |   11 |    ? |    ? |    ? |
+|   10 |            15 |       1.05 | 1.05 | 2.01 | 2.01 | 3.01 | 5.01 |
+|      |               |       5.51 | 7.51 |  9.5 | 10.5 |   12 |    ? |
+|      |               |          ? |    ? |
+|   12 |            17 |       1.05 | 1.51 | 2.01 | 2.51 | 3.01 | 4.01 |
+|      |               |       5.01 | 6.51 | 8.51 |  9.5 | 10.5 |   12 |
+|      |               |          ? |    ? |    ? |    ? |
+|   18 |            25 |       1.05 | 1.05 | 1.51 | 2.01 | 2.01 | 2.51 |
+|      |               |       3.01 | 3.51 | 4.01 | 4.51 | 5.51 | 6.51 |
+|      |               |       8.01 | 9.01 |  9.5 | 10.5 |   11 |   12 |
+|      |               |          ? |    ? |    ? |    ? |    ? |    ? |
+|   20 |            28 |       1.05 | 1.05 | 1.51 | 1.51 | 2.01 | 2.01 |
+|      |               |       2.51 | 3.01 | 3.51 | 4.01 | 4.51 | 5.51 |
+|      |               |       6.01 | 7.01 | 8.01 | 9.01 |   10 |   10 |
+|      |               |         11 |   12 |    ? |    ? |    ? |    ? |
+|      |               |          ? |    ? |    ? |
