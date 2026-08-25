@@ -266,7 +266,12 @@ EX provides a small fixed bonus to each color.  It increases as EX goes up but i
 | 10.00 - 10.49 |   +24 |    +3 |
 | 10.50 - 10.99 |   +28 |    +4 |
 | 11.00 - 11.49 |   +33 |    +5 |
-| 11.50 -     ? |   +40 |    +7 |
+| 11.50 - 11.99 |   +40 |    +7 |
+| 12.00 - 12.99 |   +48 |    +8 |
+| 12.50 - 12.99 |   +57 |    +9 |
+| 13.00 - 13.99 |   +68 |   +11 |
+| 13.50 - 13.99 |   +80 |   +12 |
+| 14.00 - ????? |   +95 |   +15 |
 
 To be clear about the fixed nature of the bonus, here is what the income for each tick of C1 looks like (with no earn or speed bonuses).  10 is where the first levelup bonus appears (and is 3x):
 
@@ -292,44 +297,44 @@ Here is a chart that shows which EX values reduce the number of ticks required t
 |    2 |    1 |    +0 |     4 | $1 \rightarrow 2 \rightarrow 4 \rightarrow 7 \rightarrow 11$ |
 |      | 1.51 |    +2 |     3 | $1 \rightarrow 3 \rightarrow 6 \rightarrow 10$ |
 |      | 6.01 |   +11 |     2 | $1 \rightarrow 5 \rightarrow 10$ |
-|      |    ? |   +41 |     1 | $1 \rightarrow 10$ |
+|      |   12 |   +48 |     1 | $1 \rightarrow 10$ |
 |    3 |    1 |    +0 |     5 | $1 \rightarrow 2 \rightarrow 3 \rightarrow 5 \rightarrow 8 \rightarrow 10$ |
 |      | 2.01 |    +3 |     4 | $1 \rightarrow 2 \rightarrow 4 \rightarrow 7 \rightarrow 10$ |
 |      | 5.01 |    +9 |     3 | $1 \rightarrow 3 \rightarrow 6 \rightarrow 10$ |
 |      |   10 |   +24 |     2 | $1 \rightarrow 6 \rightarrow 10$ |
-|      |    ? |   +63 |     1 | $1 \rightarrow 10$ |
+|      |   13 |   +68 |     1 | $1 \rightarrow 10$ |
 |    4 |    1 |    +0 |     7 | $1 \rightarrow 1 \rightarrow 2 \rightarrow 3 \rightarrow 5 \rightarrow 7 \rightarrow 9 \rightarrow 11$ |
 |      | 1.05 |    +1 |     6 | $1 \rightarrow 1 \rightarrow 2 \rightarrow 4 \rightarrow 6 \rightarrow 8 \rightarrow 10$ |
 |      | 2.51 |    +4 |     5 | $1 \rightarrow 2 \rightarrow 4 \rightarrow 6 \rightarrow 8 \rightarrow 10$ |
 |      | 4.51 |    +8 |     4 | $1 \rightarrow 3 \rightarrow 5 \rightarrow 8 \rightarrow 10$ |
 |      | 8.01 |   +15 |     3 | $1 \rightarrow 4 \rightarrow 7 \rightarrow 10$ |
 |      |   11 |   +33 |     2 | $1 \rightarrow 6 \rightarrow 10$ |
-|      |    ? |   +85 |     1 | $1 \rightarrow 10$ |
+|      |   14 |   +95 |     1 | $1 \rightarrow 10$ |
 
 For higher bases, only the EX values that shorten the path are given to keep the table smaller.
 
 | Base | Initial Ticks | EX cutoffs |      |      |      |      |      |
 | ---: | ------------: | ---------: | ---: | ---: | ---: | ---: | ---: |
 |    6 |            10 |       1.05 | 1.51 | 2.51 | 3.51 | 5.51 | 9.01 |
-|      |               |         11 |    ? |    ? |
+|      |               |         11 | 12.5 |    ? |
 |    7 |            11 |       1.05 | 1.51 | 2.51 | 3.51 | 5.51 | 8.01 |
-|      |               |         10 |   12 |    ? |    ? |
+|      |               |         10 |   12 |   13 |    ? |
 |    8 |            12 |       1.05 | 2.01 | 2.51 | 4.01 | 4.51 | 7.01 |
-|      |               |        9.5 | 10.5 |    ? |    ? |    ? |
+|      |               |        9.5 | 10.5 |   12 | 13.5 |    ? |
 |    9 |            13 |       1.05 | 1.51 | 2.51 | 3.51 | 4.51 | 6.01 |
-|      |               |       8.51 |   10 |   11 |    ? |    ? |    ? |
+|      |               |       8.51 |   10 |   11 | 12.5 |   14 |    ? |
 |   10 |            15 |       1.05 | 1.05 | 2.01 | 2.01 | 3.01 | 5.01 |
-|      |               |       5.51 | 7.51 |  9.5 | 10.5 |   12 |    ? |
+|      |               |       5.51 | 7.51 |  9.5 | 10.5 | 11.5 |   13 |
 |      |               |          ? |    ? |
 |   12 |            17 |       1.05 | 1.51 | 2.01 | 2.51 | 3.01 | 4.01 |
-|      |               |       5.01 | 6.51 | 8.51 |  9.5 | 10.5 |   12 |
-|      |               |          ? |    ? |    ? |    ? |
+|      |               |       5.01 | 6.51 | 8.51 |  9.5 | 10.5 | 11.5 |
+|      |               |       12.5 | 13.5 |    ? |    ? |
 |   18 |            25 |       1.05 | 1.05 | 1.51 | 2.01 | 2.01 | 2.51 |
 |      |               |       3.01 | 3.51 | 4.01 | 4.51 | 5.51 | 6.51 |
-|      |               |       8.01 | 9.01 |  9.5 | 10.5 |   11 |   12 |
-|      |               |          ? |    ? |    ? |    ? |    ? |    ? |
+|      |               |       8.01 | 9.01 |  9.5 | 10.5 |   11 | 11.5 |
+|      |               |         12 |   13 |   14 |    ? |    ? |    ? |
 |   20 |            28 |       1.05 | 1.05 | 1.51 | 1.51 | 2.01 | 2.01 |
 |      |               |       2.51 | 3.01 | 3.51 | 4.01 | 4.51 | 5.51 |
 |      |               |       6.01 | 7.01 | 8.01 | 9.01 |   10 |   10 |
-|      |               |         11 |   12 |    ? |    ? |    ? |    ? |
+|      |               |         11 | 11.5 |   12 | 12.5 | 13.5 |   14 |
 |      |               |          ? |    ? |    ? |
