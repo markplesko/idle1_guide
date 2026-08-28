@@ -1,0 +1,24 @@
+/* Vertical + horizontal borders on all cells */
+table.right-table {
+  border-collapse: collapse; /* makes borders look clean */
+}
+
+table.right-table th,
+table.right-table td {
+  border: 1px solid #ccc;   /* vertical + horizontal lines */
+  padding: 6px 10px;        /* spacing inside cells */
+}
+
+/* Zebra striping for readability */
+table.right-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+table.right-table tbody tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+/* Row hover highlight */
+table.right-table tbody tr:hover {
+  background-color: #e6f3ff; /* light blue */
+}

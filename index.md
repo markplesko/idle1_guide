@@ -48,6 +48,8 @@ I’ve been collecting a bunch of other data that I can start posting here.  Mos
 
 First, prestige values (same for all difficulties?)  Note that the curves start (C5) at the opposite of the name but finish (upper machines) as stated.  Machine 7 isn’t useful since the level is finished.
 
+{: .right-table}
+
 |    | Low  | Med  | High |
 | -: | ---: | ---: | ---: |
 | C5 |    5 |    2 |    1 |
@@ -65,6 +67,8 @@ First, prestige values (same for all difficulties?)  Note that the curves start 
 
 Each color has a base value for earn, multiplied by the number of that color that has been purchased.  A multiplier comes from the tier of purchases (like 10-25-50).  The different multiplier ranges only change when the tier changes, not the multiplier itself.  Here are the values, many rounded:
 
+{: .right-table}
+
 |Tier| 10-25 | 10-20 | 10-50 |   Low |   Def |  High |
 | -: | ----: | ----: | ----: | ----: | ----: | ----: |
 | T1 |   10  |   10  |   10  |     3 |     3 |     3 |
@@ -76,6 +80,8 @@ Each color has a base value for earn, multiplied by the number of that color tha
 | T7 |  400  |  480  |  300  | 45900 | 47000 |  121k |
 
 More interesting, perhaps, are the cumulative multipliers (using in-game e notation, not scientific):
+
+{: .right-table}
 
 |Tier| 10-25 | 10-20 | 10-50 |   Low |   Def |  High |
 | -: | ----: | ----: | ----: | ----: | ----: | ----: |
@@ -108,6 +114,8 @@ EX here is 1.14 plus earned EX (equivalently, the EX shown in the creation room 
 I'd guess that speed and cost follow a similar pattern but haven't computed them.  The constants could vary.
 
 Earn base values (rounded, in-game e notation):
+
+{: .right-table}
 
 |    | $\text{earn}_\text{base}$ |
 | -: | --------: |
@@ -163,6 +171,8 @@ The minimum cost is 1.
 
 Each purchase of a color increases the cost of the next purchase by a multiplier.  The multipliers vary by color.
 
+{: .right-table}
+
 |    | increase |
 | -: | -------: |
 | C1 |     15%  |
@@ -179,6 +189,8 @@ So basically, each color is 2.1% worse than the one before it _except_ that C1 t
 
 For each world and color, we also need a starting point.  C1 is special.  It seems to have values assigned for each level rather than using multipliers across world settings.  The table below gives the cost for a hypothetical purchase number zero.  Therefore, the initial purchase in the game (number two) is found by applying the above multiplier twice.
 
+{: .right-table}
+
 |        | W1 | Std | High | Plateau | Log | Exp |
 | :----- | -: | --: | ---: | ------: | --: | --: |
 | Easy   |  2 |  2  |    2 |       2 |   2 |   2 |
@@ -190,6 +202,8 @@ For each world and color, we also need a starting point.  C1 is special.  It see
 ### 7/19/26
 
 Here are the unlock costs for each cost type under easy difficulty.  Note that 'e' here means scientific notation, not the in-game notation.
+
+{: .right-table}
 
 |  |      W1 |     Std |    High | Plateau |     Log |     Exp |
 |- | ------: | ------: | ------: | ------: | ------: | ------: |
@@ -229,6 +243,8 @@ For crazy, C2 is 7.5x, C3-C5 are 87x, C6-C9 are 1700x, M1-M5 are 2650x, M6 is 26
 
 Evil has different boosts for each color, which is why each color and machine is _much_ harder to reach compared to other levels.  "e" representation normal scientific notation, not in-game "e" notation.
 
+{: .right-table}
+
 |  | Cost Mult | Exceptions |
 |--| --------: | :--------- |
 |C2|      22.8 |
@@ -250,6 +266,8 @@ Evil has different boosts for each color, which is why each color and machine is
 ### 8/10/26
 
 EX provides a small fixed bonus to each color.  It increases as EX goes up but is not impacted by any multipliers.  It starts at 1 for each 0.5 EX, rounded up (so +1 for 0.05 to 0.50, +2 for 0.51 to 1.0, +3 for 1.01 to 1.5, and so on).  However, at 9.05 EX it gives an extra +2 instead of +1, so the bonus is +18 instead of +17.  After that, the increases occur on each half point of EX rather than after them, and the amounts of the increases continue to go up.  In table form:
+
+{: .right-table}
 
 |  Displayed EX | Bonus | Added |
 | ------------: | ----: | ----: |
@@ -275,6 +293,8 @@ EX provides a small fixed bonus to each color.  It increases as EX goes up but i
 
 To be clear about the fixed nature of the bonus, here is what the income for each tick of C1 looks like (with no earn or speed bonuses).  10 is where the first levelup bonus appears (and is 3x):
 
+{: .right-table}
+
 |    # C1 | 1 EX Income | 1.2 EX Income | 10 EX Income |
 | ------: | ----------: | ------------: | -----------: |
 |       1 |           4 |             5 |           28 |
@@ -291,6 +311,8 @@ writing the number of C1s after doing a "buy all" after each tick.  With no EX, 
 ### 8/15/26
 
 Here is a chart that shows which EX values reduce the number of ticks required to get C1 to a count of 10.  See the table above explaining C1 costs to determine the base cost for a particular world.
+
+{: .right-table}
 
 | Base |   EX | Bonus | Ticks | Path |
 | ---: | ---: | ----: | ----: | :--- |
@@ -311,7 +333,25 @@ Here is a chart that shows which EX values reduce the number of ticks required t
 |      |   11 |   +33 |     2 | $1 \rightarrow 6 \rightarrow 10$ |
 |      |   14 |   +95 |     1 | $1 \rightarrow 10$ |
 
-For higher bases, only the EX values that shorten the path are given to keep the table smaller.
+Here is a same chart that shows which EX values reduce the number of ticks required to get C1 to a count of 25, but only for W1 (and other worlds with a base cost of 3).  Note that this doesn't mean that building to 25 W1 is the best starting strategy; usually, C2 is a better path.
+
+{: .right-table}
+
+| Base |   EX | Bonus | Ticks | Path |
+| ---: | ---: | ----: | ----: | :--- |
+|    3 |    1 |    +0 |     9 | $1 \rightarrow 2 \rightarrow 3 \rightarrow 5 \rightarrow 8 \rightarrow 10 \rightarrow 16 \rightarrow 20 \rightarrow 23 \rightarrow 26$ |
+|      | 2.01 |    +3 |     8 | $1 \rightarrow 2 \rightarrow 4 \rightarrow 7 \rightarrow 10 \rightarrow 16 \rightarrow 20 \rightarrow 23 \rightarrow 26$ |
+|      | 4.51 |    +8 |     7 | $1 \rightarrow 3 \rightarrow 6 \rightarrow 9 \rightarrow 12 \rightarrow 18 \rightarrow 22 \rightarrow 25$ |
+|      | 8.01 |   +15 |     6 | $1 \rightarrow 4 \rightarrow 8 \rightarrow 12 \rightarrow 17 \rightarrow 22 \rightarrow 25$ |
+|      | 10.5 |   +28 |     5 | $1 \rightarrow 6 \rightarrow 11 \rightarrow 17 \rightarrow 22 \rightarrow 25$ |
+|      |   13 |   +68 |     4 | $1 \rightarrow 10 \rightarrow 18 \rightarrow 22 \rightarrow 26$ |
+|      | 14.5 |  +112 |     3 | $1 \rightarrow 13 \rightarrow 20 \rightarrow 25$ |
+|      |    ? |  +256 |     2 | $1 \rightarrow 18 \rightarrow 25$ |
+|      |    ? |  +727 |     1 | $1 \rightarrow 25$ |
+
+Here is a chart to 10 C1 for higher bases, but it only has the EX values that shorten the path in order to keep the table smaller.
+
+{: .right-table}
 
 | Base | Initial Ticks | EX cutoffs |      |      |      |      |      |
 | ---: | ------------: | ---------: | ---: | ---: | ---: | ---: | ---: |
@@ -325,7 +365,7 @@ For higher bases, only the EX values that shorten the path are given to keep the
 |      |               |       8.51 |   10 |   11 | 12.5 |   14 |    ? |
 |   10 |            15 |       1.05 | 1.05 | 2.01 | 2.01 | 3.01 | 5.01 |
 |      |               |       5.51 | 7.51 |  9.5 | 10.5 | 11.5 |   13 |
-|      |               |          ? |    ? |
+|      |               |       14.5 |    ? |
 |   12 |            17 |       1.05 | 1.51 | 2.01 | 2.51 | 3.01 | 4.01 |
 |      |               |       5.01 | 6.51 | 8.51 |  9.5 | 10.5 | 11.5 |
 |      |               |       12.5 | 13.5 |    ? |    ? |
