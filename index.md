@@ -161,7 +161,7 @@ When speed is maxed, the penalty is around 40% less than where it maxed for that
 
 Some more game data:
 
-Cost seems to have the most variation in the game.  The costs setting gives six different shapes to costs, and cost is how the  five difficulty levels impact the game.  (And K factor a bit, tbd)  Then each color is a bit different.
+Cost seems to have the most variation in the game.  The costs setting gives six different shapes to costs, and cost is how the five difficulty levels impact the game.  The K factor also imnpacts costs.  Each color is a bit different.
 
 First, the simplest thing to explain is probably the cost prestige.  It is similar to the others.  Cost is divided by
 
@@ -169,23 +169,25 @@ $$1 + 3 * \text{cost}^\text{EX}$$
 
 The minimum cost is 1.
 
-Each purchase of a color increases the cost of the next purchase by a multiplier.  The multipliers vary by color.
+Each purchase of a color increases the cost of the next purchase by a multiplier.  The multipliers vary by color and K factor.
 
 {: .right-table}
 
-|    | increase |
-| -: | -------: |
-| C1 |     15%  |
-| C2 |   18.1%  |
-| C3 |  20.18%  |
-| C4 |   22.3%  |
-| C5 |   24.4%  |
-| C6 |   26.5%  |
-| C7 |   28.6%  |
-| C8 |   30.7%  |
-| C9 |   32.8%  |
+|    | $\text K_\text{low}$ | $\text K_\text{med}$ | $\text K_\text{high}$ |
+| -: | -------: | -------: | -------: |
+| C1 |      14% |     15%  |      16% |
+| C2 |   17.05% |   18.1%  |   19.15% |
+| C3 |   19.10% |  20.18%  |   21.28% |
+| C4 |   21.15% |   22.3%  |   23.45% |
+| C5 |   23.20% |   24.4%  |   25.60% |
+| C6 |   25.25% |   26.5%  |   27.75% |
+| C7 |   27.30% |   28.6%  |   29.90% |
+| C8 |   29.35% |   30.7%  |   32.05% |
+| C9 |   31.40% |   32.8%  |   34.20% |
 
-So basically, each color is 2.1% worse than the one before it _except_ that C1 to C2 is 3.1% and C3 is slightly off.  Maybe there's a simpler explanation, but this matches the data well.
+So basically, each color is 2.05%/2.1%/2.15% ($\text K_\text{low}$/$\text K_\text{med}$/$\text K_\text{high}$) worse than the one before it _except_ that C1 to C2 is 3.05%/3.1%/3.15% and C3 is slightly off.  Maybe there's a simpler explanation, but this matches the data well.
+
+Because these multipliers compound, the effects of $\text K_\text{low}$ and $\text K_\text{high}$ compared to $\text K_\text{med}$ are more pronounced after more purchases.  For example, the change in cost to get up to 10 of a color is less than 10%, but the change in cost for the final levelup is over 100x.
 
 For each world and color, we also need a starting point.  C1 is special.  It seems to have values assigned for each level rather than using multipliers across world settings.  The table below gives the cost for a hypothetical purchase number zero.  Therefore, the initial purchase in the game (number two) is found by applying the above multiplier twice.
 
@@ -267,43 +269,35 @@ Evil has different boosts for each color, which is why each color and machine is
 
 EX provides a small fixed bonus to each color.  It increases as EX goes up but is not impacted by any multipliers.  It starts at 1 for each 0.5 EX, rounded up (so +1 for 0.05 to 0.50, +2 for 0.51 to 1.0, +3 for 1.01 to 1.5, and so on).  However, at 9.05 EX it gives an extra +2 instead of +1, so the bonus is +18 instead of +17.  After that, the increases occur on each half point of EX rather than after them, and the amounts of the increases continue to go up.  In table form:
 
-{: .right-table}
+{: .right-table .double-third-table}
 
-|  Displayed EX | Bonus | Added |
-| ------------: | ----: | ----: |
-|          1.00 |    +0 |     - |
-|  1.05 -  1.50 |    +1 |    +1 |
-|  1.51 -  2.00 |    +2 |    +1 |
-|  2.01 -  2.50 |    +3 |    +1 |
-|           ... |   ... |   ... |
-|  7.51 -  8.00 |   +14 |    +1 |
-|  8.01 -  8.50 |   +15 |    +1 |
-|  8.51 -  9.00 |   +16 |    +1 |
-|  9.01 -  9.49 |   +18 |    +2 |
+|  Displayed EX | Bonus | Added |  Displayed EX | Bonus | Added |
+| ------------: | ----: | ----: | ------------: | ----: | ----: |
+|          1.00 |    +0 |     - | 10.50 - 10.99 |   +28 |    +4 |
+|  1.05 -  1.50 |    +1 |    +1 | 11.00 - 11.49 |   +33 |    +5 |
+|  1.51 -  2.00 |    +2 |    +1 | 11.50 - 11.99 |   +40 |    +7 |
+|  2.01 -  2.50 |    +3 |    +1 | 12.00 - 12.99 |   +48 |    +8 |
+|           ... |   ... |   ... | 12.50 - 12.99 |   +57 |    +9 |
+|  7.51 -  8.00 |   +14 |    +1 | 13.00 - 13.99 |   +68 |   +11 |
+|  8.01 -  8.50 |   +15 |    +1 | 13.50 - 13.99 |   +80 |   +12 |
+|  8.51 -  9.00 |   +16 |    +1 | 14.00 - 14.49 |   +95 |   +15 |
+|  9.01 -  9.49 |   +18 |    +2 | 14.50 - ????? |  +112 |   +17 |
 |  9.50 -  9.99 |   +21 |    +3 |
 | 10.00 - 10.49 |   +24 |    +3 |
-| 10.50 - 10.99 |   +28 |    +4 |
-| 11.00 - 11.49 |   +33 |    +5 |
-| 11.50 - 11.99 |   +40 |    +7 |
-| 12.00 - 12.99 |   +48 |    +8 |
-| 12.50 - 12.99 |   +57 |    +9 |
-| 13.00 - 13.99 |   +68 |   +11 |
-| 13.50 - 13.99 |   +80 |   +12 |
-| 14.00 - ????? |   +95 |   +15 |
 
 To be clear about the fixed nature of the bonus, here is what the income for each tick of C1 looks like (with no earn or speed bonuses).  10 is where the first levelup bonus appears (and is 3x):
 
 {: .right-table}
 
-|    # C1 | 1 EX Income | 1.2 EX Income | 10 EX Income |
-| ------: | ----------: | ------------: | -----------: |
-|       1 |           4 |             5 |           28 |
-|       2 |           8 |             9 |           32 |
-|       3 |          12 |            13 |           36 |
-|     ... |         ... |           ... |          ... |
-|       9 |          36 |            37 |           60 |
-| (3x) 10 |         120 |           121 |          144 |
-|      11 |         132 |           133 |          156 |
+|    # C1 | 1 EX | 1.2 EX | 10 EX |
+| ------: | ---: | -----: | ----: |
+|       1 |    4 |      5 |    28 |
+|       2 |    8 |      9 |    32 |
+|       3 |   12 |     13 |    36 |
+|     ... |  ... |    ... |   ... |
+|       9 |   36 |     37 |    60 |
+| (3x) 10 |  120 |    121 |   144 |
+|      11 |  132 |    133 |   156 |
 
 The EX fixed bonus makes buying C1s faster.  We can describe this by
 writing the number of C1s after doing a "buy all" after each tick.  With no EX, W1 goes $1 \rightarrow 2 \rightarrow 3 \rightarrow 5 \rightarrow 8 \rightarrow 10$ (5 ticks).  After an initial small EX reset, it changes to $1 \rightarrow 2 \rightarrow 4 \rightarrow 6 \rightarrow 9 \rightarrow 11$.  The effect is minor as it still takes 5 ticks.  At 2.01 EX, it shortens to $1 \rightarrow 2 \rightarrow 4 \rightarrow 7 \rightarrow 10$ (4 ticks), which saves 4+ seconds.  At 5.01 EX, it shortens to $1 \rightarrow 3 \rightarrow 6 \rightarrow 10$ (3 ticks).  At 10 EX, it shortens to $1 \rightarrow 6 \rightarrow 10$ (2 ticks).
@@ -314,40 +308,40 @@ Here is a chart that shows which EX values reduce the number of ticks required t
 
 {: .right-table}
 
-| Base |   EX | Bonus | Ticks | Path |
-| ---: | ---: | ----: | ----: | :--- |
-|    2 |    1 |    +0 |     4 | $1 \rightarrow 2 \rightarrow 4 \rightarrow 7 \rightarrow 11$ |
-|      | 1.51 |    +2 |     3 | $1 \rightarrow 3 \rightarrow 6 \rightarrow 10$ |
-|      | 6.01 |   +11 |     2 | $1 \rightarrow 5 \rightarrow 10$ |
-|      |   12 |   +48 |     1 | $1 \rightarrow 10$ |
-|    3 |    1 |    +0 |     5 | $1 \rightarrow 2 \rightarrow 3 \rightarrow 5 \rightarrow 8 \rightarrow 10$ |
-|      | 2.01 |    +3 |     4 | $1 \rightarrow 2 \rightarrow 4 \rightarrow 7 \rightarrow 10$ |
-|      | 5.01 |    +9 |     3 | $1 \rightarrow 3 \rightarrow 6 \rightarrow 10$ |
-|      |   10 |   +24 |     2 | $1 \rightarrow 6 \rightarrow 10$ |
-|      |   13 |   +68 |     1 | $1 \rightarrow 10$ |
-|    4 |    1 |    +0 |     7 | $1 \rightarrow 1 \rightarrow 2 \rightarrow 3 \rightarrow 5 \rightarrow 7 \rightarrow 9 \rightarrow 11$ |
-|      | 1.05 |    +1 |     6 | $1 \rightarrow 1 \rightarrow 2 \rightarrow 4 \rightarrow 6 \rightarrow 8 \rightarrow 10$ |
-|      | 2.51 |    +4 |     5 | $1 \rightarrow 2 \rightarrow 4 \rightarrow 6 \rightarrow 8 \rightarrow 10$ |
-|      | 4.51 |    +8 |     4 | $1 \rightarrow 3 \rightarrow 5 \rightarrow 8 \rightarrow 10$ |
-|      | 8.01 |   +15 |     3 | $1 \rightarrow 4 \rightarrow 7 \rightarrow 10$ |
-|      |   11 |   +33 |     2 | $1 \rightarrow 6 \rightarrow 10$ |
-|      |   14 |   +95 |     1 | $1 \rightarrow 10$ |
+|   Base |   EX | Bonus | Ticks | Path |
+| -----: | ---: | ----: | ----: | :--- |
+|      2 |    1 |    +0 |     4 | $1 \rightarrow 2 \rightarrow 4 \rightarrow 7 \rightarrow 11$ |
+|        | 1.51 |    +2 |     3 | $1 \rightarrow 3 \rightarrow 6 \rightarrow 10$ |
+|        | 6.01 |   +11 |     2 | $1 \rightarrow 5 \rightarrow 10$ |
+|        |   12 |   +48 |     1 | $1 \rightarrow 10$ |
+| 3 (W1) |    1 |    +0 |     5 | $1 \rightarrow 2 \rightarrow 3 \rightarrow 5 \rightarrow 8 \rightarrow 10$ |
+|        | 2.01 |    +3 |     4 | $1 \rightarrow 2 \rightarrow 4 \rightarrow 7 \rightarrow 10$ |
+|        | 5.01 |    +9 |     3 | $1 \rightarrow 3 \rightarrow 6 \rightarrow 10$ |
+|        |   10 |   +24 |     2 | $1 \rightarrow 6 \rightarrow 10$ |
+|        |   13 |   +68 |     1 | $1 \rightarrow 10$ |
+|      4 |    1 |    +0 |     7 | $1 \rightarrow 1 \rightarrow 2 \rightarrow 3 \rightarrow 5 \rightarrow 7 \rightarrow 9 \rightarrow 11$ |
+|        | 1.05 |    +1 |     6 | $1 \rightarrow 1 \rightarrow 2 \rightarrow 4 \rightarrow 6 \rightarrow 8 \rightarrow 10$ |
+|        | 2.51 |    +4 |     5 | $1 \rightarrow 2 \rightarrow 4 \rightarrow 6 \rightarrow 8 \rightarrow 10$ |
+|        | 4.51 |    +8 |     4 | $1 \rightarrow 3 \rightarrow 5 \rightarrow 8 \rightarrow 10$ |
+|        | 8.01 |   +15 |     3 | $1 \rightarrow 4 \rightarrow 7 \rightarrow 10$ |
+|        |   11 |   +33 |     2 | $1 \rightarrow 6 \rightarrow 10$ |
+|        |   14 |   +95 |     1 | $1 \rightarrow 10$ |
 
 Here is a same chart that shows which EX values reduce the number of ticks required to get C1 to a count of 25, but only for W1 (and other worlds with a base cost of 3).  Note that this doesn't mean that building to 25 W1 is the best starting strategy; usually, C2 is a better path.
 
 {: .right-table}
 
-| Base |   EX | Bonus | Ticks | Path |
-| ---: | ---: | ----: | ----: | :--- |
-|    3 |    1 |    +0 |     9 | $1 \rightarrow 2 \rightarrow 3 \rightarrow 5 \rightarrow 8 \rightarrow 10 \rightarrow 16 \rightarrow 20 \rightarrow 23 \rightarrow 26$ |
-|      | 2.01 |    +3 |     8 | $1 \rightarrow 2 \rightarrow 4 \rightarrow 7 \rightarrow 10 \rightarrow 16 \rightarrow 20 \rightarrow 23 \rightarrow 26$ |
-|      | 4.51 |    +8 |     7 | $1 \rightarrow 3 \rightarrow 6 \rightarrow 9 \rightarrow 12 \rightarrow 18 \rightarrow 22 \rightarrow 25$ |
-|      | 8.01 |   +15 |     6 | $1 \rightarrow 4 \rightarrow 8 \rightarrow 12 \rightarrow 17 \rightarrow 22 \rightarrow 25$ |
-|      | 10.5 |   +28 |     5 | $1 \rightarrow 6 \rightarrow 11 \rightarrow 17 \rightarrow 22 \rightarrow 25$ |
-|      |   13 |   +68 |     4 | $1 \rightarrow 10 \rightarrow 18 \rightarrow 22 \rightarrow 26$ |
-|      | 14.5 |  +112 |     3 | $1 \rightarrow 13 \rightarrow 20 \rightarrow 25$ |
-|      |    ? |  +256 |     2 | $1 \rightarrow 18 \rightarrow 25$ |
-|      |    ? |  +727 |     1 | $1 \rightarrow 25$ |
+|   Base |   EX | Bonus | Ticks | Path |
+| -----: | ---: | ----: | ----: | :--- |
+| 3 (W1) |    1 |    +0 |     9 | $1 \rightarrow 2 \rightarrow 3 \rightarrow 5 \rightarrow 8 \rightarrow 10 \rightarrow 16 \rightarrow 20 \rightarrow 23 \rightarrow 26$ |
+|        | 2.01 |    +3 |     8 | $1 \rightarrow 2 \rightarrow 4 \rightarrow 7 \rightarrow 10 \rightarrow 16 \rightarrow 20 \rightarrow 23 \rightarrow 26$ |
+|        | 4.51 |    +8 |     7 | $1 \rightarrow 3 \rightarrow 6 \rightarrow 9 \rightarrow 12 \rightarrow 18 \rightarrow 22 \rightarrow 25$ |
+|        | 8.01 |   +15 |     6 | $1 \rightarrow 4 \rightarrow 8 \rightarrow 12 \rightarrow 17 \rightarrow 22 \rightarrow 25$ |
+|        | 10.5 |   +28 |     5 | $1 \rightarrow 6 \rightarrow 11 \rightarrow 17 \rightarrow 22 \rightarrow 25$ |
+|        |   13 |   +68 |     4 | $1 \rightarrow 10 \rightarrow 18 \rightarrow 22 \rightarrow 26$ |
+|        | 14.5 |  +112 |     3 | $1 \rightarrow 13 \rightarrow 20 \rightarrow 25$ |
+|        |    ? |  +256 |     2 | $1 \rightarrow 18 \rightarrow 25$ |
+|        |    ? |  +727 |     1 | $1 \rightarrow 25$ |
 
 Here is a chart to 10 C1 for higher bases, but it only has the EX values that shorten the path in order to keep the table smaller.
 

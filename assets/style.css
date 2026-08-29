@@ -22,3 +22,8 @@ table.right-table tbody tr:nth-child(odd) {
 table.right-table tbody tr:hover {
   background-color: #e6f3ff; /* light blue */
 }
+
+table.double-third-table th:nth-child(3),
+table.double-third-table td:nth-child(3) {
+  border-right: 6px double #ccc; /* double right border for the third column */
+}
