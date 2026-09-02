@@ -281,9 +281,9 @@ EX provides a small fixed bonus to each color.  It increases as EX goes up but i
 |  7.51 -  8.00 |   +14 |    +1 | 13.00 - 13.99 |   +68 |   +11 |
 |  8.01 -  8.50 |   +15 |    +1 | 13.50 - 13.99 |   +80 |   +12 |
 |  8.51 -  9.00 |   +16 |    +1 | 14.00 - 14.49 |   +95 |   +15 |
-|  9.01 -  9.49 |   +18 |    +2 | 14.50 - ????? |  +112 |   +17 |
-|  9.50 -  9.99 |   +21 |    +3 |
-| 10.00 - 10.49 |   +24 |    +3 |
+|  9.01 -  9.49 |   +18 |    +2 | 14.50 - 14.99 |  +112 |   +17 |
+|  9.50 -  9.99 |   +21 |    +3 | 15.00 - 15.49 |  +131 |   +19 |
+| 10.00 - 10.49 |   +24 |    +3 | 15.50 - ????? |  +152 |   +21 |
 
 To be clear about the fixed nature of the bonus, here is what the income for each tick of C1 looks like (with no earn or speed bonuses).  10 is where the first levelup bonus appears (and is 3x):
 
@@ -343,16 +343,16 @@ Here is a same chart that shows which EX values reduce the number of ticks requi
 |        |    ? |  +256 |     2 | $1 \rightarrow 18 \rightarrow 25$ |
 |        |    ? |  +727 |     1 | $1 \rightarrow 25$ |
 
-Here is a chart to 10 C1 for higher bases, but it only has the EX values that shorten the path in order to keep the table smaller.
+Here is a chart to 10 C1 for higher bases, but it only has the EX values that shorten the path in order to keep the table smaller.  For example, with no EX, it takes 10 ticks of buying all to get to 10 C1s.  At 1.05 EX, it drops to 9.  At 1.51 EX, it drops to 8, and so on, until at 15 EX, one tick is enough.
 
 {: .right-table}
 
 | Base | Initial Ticks | EX cutoffs |      |      |      |      |      |
 | ---: | ------------: | ---------: | ---: | ---: | ---: | ---: | ---: |
 |    6 |            10 |       1.05 | 1.51 | 2.51 | 3.51 | 5.51 | 9.01 |
-|      |               |         11 | 12.5 |    ? |
+|      |               |         11 | 12.5 |   15 |
 |    7 |            11 |       1.05 | 1.51 | 2.51 | 3.51 | 5.51 | 8.01 |
-|      |               |         10 |   12 |   13 |    ? |
+|      |               |         10 |   12 |   13 | 15.5 |
 |    8 |            12 |       1.05 | 2.01 | 2.51 | 4.01 | 4.51 | 7.01 |
 |      |               |        9.5 | 10.5 |   12 | 13.5 |    ? |
 |    9 |            13 |       1.05 | 1.51 | 2.51 | 3.51 | 4.51 | 6.01 |
@@ -362,13 +362,13 @@ Here is a chart to 10 C1 for higher bases, but it only has the EX values that sh
 |      |               |       14.5 |    ? |
 |   12 |            17 |       1.05 | 1.51 | 2.01 | 2.51 | 3.01 | 4.01 |
 |      |               |       5.01 | 6.51 | 8.51 |  9.5 | 10.5 | 11.5 |
-|      |               |       12.5 | 13.5 |    ? |    ? |
+|      |               |       12.5 | 13.5 |   15 |    ? |
 |   18 |            25 |       1.05 | 1.05 | 1.51 | 2.01 | 2.01 | 2.51 |
 |      |               |       3.01 | 3.51 | 4.01 | 4.51 | 5.51 | 6.51 |
 |      |               |       8.01 | 9.01 |  9.5 | 10.5 |   11 | 11.5 |
-|      |               |         12 |   13 |   14 |    ? |    ? |    ? |
+|      |               |         12 |   13 |   14 |   15 |    ? |    ? |
 |   20 |            28 |       1.05 | 1.05 | 1.51 | 1.51 | 2.01 | 2.01 |
 |      |               |       2.51 | 3.01 | 3.51 | 4.01 | 4.51 | 5.51 |
 |      |               |       6.01 | 7.01 | 8.01 | 9.01 |   10 |   10 |
 |      |               |         11 | 11.5 |   12 | 12.5 | 13.5 |   14 |
-|      |               |          ? |    ? |    ? |
+|      |               |         15 |    ? |    ? |
