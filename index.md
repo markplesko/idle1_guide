@@ -3,17 +3,61 @@ title: idle1 data
 layout: default
 ---
 
-Initially, this just contains copies of posts from the idle1 discord.
+This mostly contains copies of posts from the idle1 discord.  Over time,
+hopefully I will make it more guide-like.
 
-### 6/2/26
+### Formula for POW $\rightarrow$ EX
 
-(formula for constant income boost from EX)
+Total POW consists of what the creation screen calls "POW" and "IDLE",
+which are sometimes referred to as "normal POW" and "idle POW".
+Total POW is also sometimes (confusingly) referred to as just "POW".
 
-Yes, 0.04 + (0.01 * pow/2).  This includes the 2 pow that you start with (1 normal pow and 1 idle)
+When you do a nuclear reset, both forms of POW are converted to EX.
+The sum is all that matters, so there is no need to switch it
+to/from idle POW.  Both forms of POW then go back to their initial
+values of 1.  With low values of EX, world 1 won't go much faster than
+the initial slog through it.
 
-This means that if you beat w1-w7 with no earned pow, you get 0.05 since you have the automatic 2 pow.  If you want the formula to start with the 0.05, then you need to subtract those 2, so 0.05 + (0.01 * (pow-2)/2)
+The formula for EX is as follows.
+The $\lfloor x\rfloor$ notation means to round down.
 
-(except, the 0.14 to 0.15 EX transition appears to happen at 22.5 POW rather than 22)
+$$\text{EX}_\text{gain} =
+  0.04 + \left(0.01 *
+  \left\lfloor\frac{\text{pow}_\text{total}}{2}\right\rfloor\right)$$
+
+This includes the 2 total POW that you start with
+(1 normal POW and 1 idle POW).
+This means that if you beat W1-W7 with no earned POW, you get 0.05 EX
+since you have the initial 2 total POW.
+If you want the formula to start with the 0.05 value,
+then you need to subtract those 2 initial total POW,
+so the formula can also be written as follows:
+
+$$\begin{aligned}\text{EX}_\text{gain} &=
+  0.05 + \left(0.01 *
+  \left\lfloor\dfrac{(\text{pow}_\text{total}-2)}{2}\right\rfloor\right)\\
+  &=0.05 + \left(0.01 *
+  \left\lfloor\dfrac{\text{pow}_\text{earned}}{2}\right\rfloor\right)\\ \end{aligned}$$
+
+The rounding means that each 2 total POW yields 0.01 EX,
+and the POW in between those points has no effect.
+However, for unknown reasons, sometimes the EX value goes up a bit late.
+The community has seen 0.08 EX occur at 8.5 total POW$^*$ instead of 8
+and 0.15 EX occur at 22.5 total POW$^{**}$ instead of 22.
+
+Here is a chart of some conversion values.  POW$_\text{normal}$ assumes
+an idle POW value of 1.
+
+{: .column-table .quad-column-table}
+
+| POW$_\text{total}$  |    2 |    4 |    6 | 8.5$^*$ |   10 |   12 |   14 |   16 |   18 |   20 | 22.5$^{**}$ |
+| POW$_\text{normal}$ |    1 |    3 |    5 | 7.5$^*$ |    9 |   11 |   13 |   15 |   17 |   19 | 21.5$^{**}$ |
+| POW$_\text{earned}$ |    0 |    2 |    4 | 6.5$^*$ |    8 |   10 |   12 |   14 |   16 |   18 | 20.5$^{**}$ |
+| EX                  | 0.05 | 0.06 | 0.07 |    0.08 | 0.09 | 0.10 | 0.11 | 0.12 | 0.13 | 0.14 | 0.15 |
+| POW$_\text{total}$  |   32 |   42 |   52 |      62 |   72 |   82 |   92 |  192 |  292 |  392 |  492 |
+| POW$_\text{normal}$ |   31 |   41 |   51 |      61 |   71 |   81 |   91 |  191 |  291 |  391 |  491 |
+| POW$_\text{earned}$ |   30 |   40 |   50 |      60 |   70 |   80 |   90 |  190 |  290 |  390 |  490 |
+| EX                  | 0.20 | 0.25 | 0.30 |    0.35 | 0.40 | 0.45 | 0.50 | 1.00 | 1.50 | 2.00 | 2.50 |
 
 ### 6/11/26
 
@@ -273,17 +317,22 @@ EX provides a small fixed bonus to each color.  It increases as EX goes up but i
 
 |  Displayed EX | Bonus | Added |  Displayed EX | Bonus | Added |
 | ------------: | ----: | ----: | ------------: | ----: | ----: |
-|          1.00 |    +0 |     - | 10.50 - 10.99 |   +28 |    +4 |
-|  1.05 -  1.50 |    +1 |    +1 | 11.00 - 11.49 |   +33 |    +5 |
-|  1.51 -  2.00 |    +2 |    +1 | 11.50 - 11.99 |   +40 |    +7 |
-|  2.01 -  2.50 |    +3 |    +1 | 12.00 - 12.99 |   +48 |    +8 |
-|           ... |   ... |   ... | 12.50 - 12.99 |   +57 |    +9 |
-|  7.51 -  8.00 |   +14 |    +1 | 13.00 - 13.99 |   +68 |   +11 |
-|  8.01 -  8.50 |   +15 |    +1 | 13.50 - 13.99 |   +80 |   +12 |
-|  8.51 -  9.00 |   +16 |    +1 | 14.00 - 14.49 |   +95 |   +15 |
-|  9.01 -  9.49 |   +18 |    +2 | 14.50 - 14.99 |  +112 |   +17 |
-|  9.50 -  9.99 |   +21 |    +3 | 15.00 - 15.49 |  +131 |   +19 |
-| 10.00 - 10.49 |   +24 |    +3 | 15.50 - ????? |  +152 |   +21 |
+|          1.00 |    +0 |     - | 13.00 - 13.49 |   +68 |   +11 |
+|  1.05 -  1.50 |    +1 |    +1 | 13.50 - 13.99 |   +80 |   +12 |
+|  1.51 -  2.00 |    +2 |    +1 | 14.00 - 14.49 |   +95 |   +15 |
+|  2.01 -  2.50 |    +3 |    +1 | 14.50 - 14.99 |  +112 |   +17 |
+|           ... |   ... |   ... | 15.00 - 15.49 |  +131 |   +19 |
+|  7.51 -  8.00 |   +14 |    +1 | 15.50 - 15.99 |  +152 |   +21 |
+|  8.01 -  8.50 |   +15 |    +1 | 16.00 - 16.49 |  +176 |   +24 |
+|  8.51 -  9.00 |   +16 |    +1 | 16.50 - 16.99 |  +203 |   +27 |
+|  9.01 -  9.49 |   +18 |    +2 | 17.00 - 17.49 |  +233 |   +30 |
+|  9.50 -  9.99 |   +21 |    +3 | 17.50 - 17.99 |  +265 |   +32 |
+| 10.00 - 10.49 |   +24 |    +3 | 18.00 - 18.49 |  +301 |   +36 |
+| 10.50 - 10.99 |   +28 |    +4 | 18.50 - 18.99 |  +340 |   +39 |
+| 11.00 - 11.49 |   +33 |    +5 | 19.00 - ????? |  +382 |   +42 |
+| 11.50 - 11.99 |   +40 |    +7 |
+| 12.00 - 12.49 |   +48 |    +8 |
+| 12.50 - 12.99 |   +57 |    +9 |
 
 To be clear about the fixed nature of the bonus, here is what the income for each tick of C1 looks like (with no earn or speed bonuses).  10 is where the first levelup bonus appears (and is 3x):
 
@@ -340,7 +389,7 @@ Here is a same chart that shows which EX values reduce the number of ticks requi
 |        | 10.5 |   +28 |     5 | $1 \rightarrow 6 \rightarrow 11 \rightarrow 17 \rightarrow 22 \rightarrow 25$ |
 |        |   13 |   +68 |     4 | $1 \rightarrow 10 \rightarrow 18 \rightarrow 22 \rightarrow 26$ |
 |        | 14.5 |  +112 |     3 | $1 \rightarrow 13 \rightarrow 20 \rightarrow 25$ |
-|        |    ? |  +256 |     2 | $1 \rightarrow 18 \rightarrow 25$ |
+|        | 17.5 |  +256 |     2 | $1 \rightarrow 18 \rightarrow 25$ |
 |        |    ? |  +727 |     1 | $1 \rightarrow 25$ |
 
 Here is a chart to 10 C1 for higher bases, but it only has the EX values that shorten the path in order to keep the table smaller.  For example, with no EX, it takes 10 ticks of buying all to get to 10 C1s.  At 1.05 EX, it drops to 9.  At 1.51 EX, it drops to 8, and so on, until at 15 EX, one tick is enough.
@@ -350,19 +399,19 @@ Here is a chart to 10 C1 for higher bases, but it only has the EX values that sh
 | Base | Initial Ticks | EX cutoffs |      |      |      |      |      |
 | ---: | ------------: | ---------: | ---: | ---: | ---: | ---: | ---: |
 |    6 |            10 |       1.05 | 1.51 | 2.51 | 3.51 | 5.51 | 9.01 |
-|      |               |         11 | 12.5 |   15 |
+|      |               |         11 | 12.5 |**15**|
 |    7 |            11 |       1.05 | 1.51 | 2.51 | 3.51 | 5.51 | 8.01 |
-|      |               |         10 |   12 |   13 | 15.5 |
+|      |               |         10 |   12 |   13 |**15.5**|
 |    8 |            12 |       1.05 | 2.01 | 2.51 | 4.01 | 4.51 | 7.01 |
-|      |               |        9.5 | 10.5 |   12 | 13.5 |   16 |
+|      |               |        9.5 | 10.5 |   12 | 13.5 |**16** |
 |    9 |            13 |       1.05 | 1.51 | 2.51 | 3.51 | 4.51 | 6.01 |
-|      |               |       8.51 |   10 |   11 | 12.5 |   14 | 16.5 |
+|      |               |       8.51 |   10 |   11 | 12.5 |   14 |**16.5** |
 |   10 |            15 |       1.05 | 1.05 | 2.01 | 2.01 | 3.01 | 5.01 |
 |      |               |       5.51 | 7.51 |  9.5 | 10.5 | 11.5 |   13 |
-|      |               |       14.5 |   17 |
+|      |               |       14.5 |**17**|
 |   12 |            17 |       1.05 | 1.51 | 2.01 | 2.51 | 3.01 | 4.01 |
 |      |               |       5.01 | 6.51 | 8.51 |  9.5 | 10.5 | 11.5 |
-|      |               |       12.5 | 13.5 |   15 |    ? |
+|      |               |       12.5 | 13.5 |   15 |**17.5**|
 |   18 |            25 |       1.05 | 1.05 | 1.51 | 2.01 | 2.01 | 2.51 |
 |      |               |       3.01 | 3.51 | 4.01 | 4.51 | 5.51 | 6.51 |
 |      |               |       8.01 | 9.01 |  9.5 | 10.5 |   11 | 11.5 |

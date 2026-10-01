@@ -9,13 +9,14 @@ table.right-table td {
   padding: 6px 10px;        /* spacing inside cells */
 }
 
-/* Zebra striping for readability */
-table.right-table tbody tr:nth-child(even) {
-  background-color: #f2f2f2;
+table.right-table th {
+  background-color: #f0f0f0;
+  font-weight: bold;
 }
 
-table.right-table tbody tr:nth-child(odd) {
-  background-color: #ffffff;
+/* Zebra striping for readability */
+table.right-table tbody tr:nth-child(even) {
+  background-color: #fafafa;
 }
 
 /* Row hover highlight */
@@ -26,4 +27,33 @@ table.right-table tbody tr:hover {
 table.double-third-table th:nth-child(3),
 table.double-third-table td:nth-child(3) {
   border-right: 6px double #ccc; /* double right border for the third column */
+}
+
+/* Vertical + horizontal borders on all cells */
+table.column-table {
+  border-collapse: collapse; /* makes borders look clean */
+  text-align: center;  /* center text inside all cells */
+}
+
+table.column-table th,
+table.column-table td {
+  border: 1px solid #ccc;
+  padding: 6px 10px;
+}
+
+/* Zebra-striping columns */
+table.column-table td:nth-child(odd),
+table.column-table th:nth-child(odd) {
+  background-color: #fafafa;
+}
+
+/* Shade first column */
+table.column-table tr > :first-child {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+/* Double border under the second row */
+table.quad-column-table tr:nth-child(4) td {
+  border-bottom: 6px double #ccc; /* double bottom border for the second row */
 }
