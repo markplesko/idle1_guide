@@ -45,8 +45,14 @@ However, for unknown reasons, sometimes the EX value goes up a bit late.
 The community has seen 0.08 EX occur at 8.5 total POW$^*$ instead of 8
 and 0.15 EX occur at 22.5 total POW$^{**}$ instead of 22.
 
-Here is a chart of some conversion values.  POW$_\text{normal}$ assumes
-an idle POW value of 1.
+The following is a chart of some conversion values.
+Different measures of POW are included.
+POW$\_{\text{normal}}$ assumes an POW$\_{\text{idle}}$ value of 1.
+Therefore, the different POWs are related by a simple relationship:
+
+$\text{POW}\_{\text{total}}
+  =\text{POW}\_{\text{normal}}+1
+  =\text{POW}\_{\text{earned}}+2$
 
 {: .column-table .quad-column-table}
 
@@ -67,7 +73,7 @@ I just measured 20 color 1 completions:
 - with manual (held): 47s
 - with manual (tapped): 53s
 
-The in-game profit reporting looks incorrect to me.  I think it’s using 4s (rather than ~4.35) for the base.  It then shows 7x speedup rather than not quite 2x.  It also omits the small (1+), fixed bonus due to EX that we see.
+[fixed] ~~The in-game profit reporting looks incorrect to me.  I think it’s using 4s (rather than ~4.35) for the base.~~  [need to check this] It then shows 7x speedup rather than not quite 2x.  [fixed] ~~It also omits the small (1+), fixed bonus due to EX that we see.~~
 
 Time bomb on C1 takes about 25s.  So it’s 5-6x slower.  Income goes from 4 to 576, which 144x.  (Manual cuts the time in about half.)
 
@@ -184,6 +190,9 @@ where EX is again 1.14 plus earned EX (equivalently, the EX shown in the creatio
 The impact of speed on earn matches the curve given by the formula (so, 1/10 of the impact of earn)
 
 $$\text{earn}_\text{net} = \text{earn}_\text{base} * (1 + 0.3 * \text{speed}^\text{EX} + 3.0 * \text{earn}^\text{EX})$$
+
+The maximum speed is 0.3 seconds/completion
+(equivalently, 200 completions per minute).
 
 However...
 
@@ -329,9 +338,9 @@ EX provides a small fixed bonus to each color.  It increases as EX goes up but i
 |  9.50 -  9.99 |   +21 |    +3 | 17.50 - 17.99 |  +265 |   +32 |
 | 10.00 - 10.49 |   +24 |    +3 | 18.00 - 18.49 |  +301 |   +36 |
 | 10.50 - 10.99 |   +28 |    +4 | 18.50 - 18.99 |  +340 |   +39 |
-| 11.00 - 11.49 |   +33 |    +5 | 19.00 - ????? |  +382 |   +42 |
-| 11.50 - 11.99 |   +40 |    +7 |
-| 12.00 - 12.49 |   +48 |    +8 |
+| 11.00 - 11.49 |   +33 |    +5 | 19.00 - 19.49 |  +382 |   +42 |
+| 11.50 - 11.99 |   +40 |    +7 | 19.50 - 19.99 |  +428 |   +46 |
+| 12.00 - 12.49 |   +48 |    +8 | 20.00 - ????? |  +478 |   +50 |
 | 12.50 - 12.99 |   +57 |    +9 |
 
 To be clear about the fixed nature of the bonus, here is what the income for each tick of C1 looks like (with no earn or speed bonuses).  10 is where the first levelup bonus appears (and is 3x):
@@ -415,9 +424,9 @@ Here is a chart to 10 C1 for higher bases, but it only has the EX values that sh
 |   18 |            25 |       1.05 | 1.05 | 1.51 | 2.01 | 2.01 | 2.51 |
 |      |               |       3.01 | 3.51 | 4.01 | 4.51 | 5.51 | 6.51 |
 |      |               |       8.01 | 9.01 |  9.5 | 10.5 |   11 | 11.5 |
-|      |               |         12 |   13 |   14 |   15 | 16.5 |    ? |
+|      |               |         12 |   13 |   14 |   15 | 16.5 |**19.5**|
 |   20 |            28 |       1.05 | 1.05 | 1.51 | 1.51 | 2.01 | 2.01 |
 |      |               |       2.51 | 3.01 | 3.51 | 4.01 | 4.51 | 5.51 |
 |      |               |       6.01 | 7.01 | 8.01 | 9.01 |   10 |   10 |
 |      |               |         11 | 11.5 |   12 | 12.5 | 13.5 |   14 |
-|      |               |         15 |   17 |    ? |
+|      |               |         15 |   17 |**20**|
