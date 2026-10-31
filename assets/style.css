@@ -24,6 +24,12 @@ table.right-table tbody tr:hover {
   background-color: #e6f3ff; /* light blue */
 }
 
+/* Shade first column */
+table.right-table tr > :first-child {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
 table.double-third-table th:nth-child(3),
 table.double-third-table td:nth-child(3) {
   border-right: 6px double #ccc; /* double right border for the third column */
@@ -56,4 +62,14 @@ table.column-table tr > :first-child {
 /* Double border under the second row */
 table.quad-column-table tr:nth-child(4) td {
   border-bottom: 6px double #ccc; /* double bottom border for the second row */
+}
+
+.cell-red {
+  font-weight: bold;
+  color: #cc0000;
+}
+
+.cell-blue {
+  font-weight: bold;
+  color: #0066cc;
 }

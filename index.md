@@ -92,7 +92,7 @@ Tier 6 under the high setting might be a mistake.
 
 <img src="charts/levelup_cumul_reldef.png" alt="Levelup Comparison" width="550" height="330">
 
-The high fixed costs setting adds a 5x multiplier to C8 and 8x to C9.  The K factor will have an impact but is currently disabled in the game.
+The high fixed costs setting adds a 5x multiplier to C8 and 8x to C9.
 
 The value is also multiplied by the number purchased of that color and the bonus from earn/speed/EX.
 
@@ -260,3 +260,50 @@ Evil has different boosts for each color, which is why each color and machine is
 |M5|    2.1e49 |
 |M6|    1.3e61 |
 |M7|    7.5e86 | W1 is 1e87, plat is 7.5e87
+
+### 10/31/26
+
+CMax posted a question about prestige values.
+The manual gives the following prestige formula:
+
+$$\text{prestige}=\text{base}^{\text{POW}} + (\text{POW}-1) * 20$$
+
+However, with a base value of $2$ and a POW of $2.8$,
+the game gives $45$ when the manual predicts $\lceil 42.96\rceil=43$.
+
+Some other values are also slightly too large.
+None appear to be too small.
+Here are the prestige values for the medium prestige curve
+for POWs from 1 to 3.
+A <span class="cell-red">red</span> value indicates one that is
+<span class="cell-red">two</span> larger than the formula gives.
+A <span class="cell-blue">blue</span> value indicates one that is
+<span class="cell-blue">one</span> larger than the formula gives.
+Note that once the values reach 1000,
+the displayed values are rounded and hide small differences.
+
+{: .right-table}
+
+|POW|C5|C6 |C7 |C8  |C9  |M1  |M2  |M3  |M4  |M5  |M6  |
+| -:|-:|-: |-: |-:  |-:  |-:  |-:  |-:  |-:  |-:  |-:  |
+|1  |2 |5  |36 |100 |480 |2k  |9k  |35k |123k|1M  |5M  |
+|1.1|5 |8  |<span class="cell-blue">55</span>|<span class="cell-blue">162</span>|892 |4k  |22k |99k |397k|3M  |23M |
+|1.2|<span class="cell-blue">8</span>|<span class="cell-blue">12</span>|78 |256 |1k  |9k  |55k |283k|1M  |15M |109M|
+|1.3|<span class="cell-blue">10</span>|15 |112|405 |3k  |19k |138k|807k|4M  |63M |511M|
+|1.4|<span class="cell-blue">12</span>|18 |<span class="cell-blue">160</span>|<span class="cell-blue">640</span>|5k  |41k |343k|2M  |13M |251M|2B  |
+|1.5|<span class="cell-red">15</span>|22 |<span class="cell-red">228</span>|1k  |10k |89k |853k|6M  |43M |1B  |11B |
+|1.6|16|26 |322|1k  |19k |191k|2M  |18M |139M|3B  |52B |
+|1.7|18|30 |<span class="cell-blue">458</span>|2k  |36k |409k|5M  |53M |449M|15B |244B|
+|1.8|20|35 |<span class="cell-blue">650</span>|3k  |67k |874k|13M |151M|1B  |63B |1T  |
+|1.9|22|40 |<span class="cell-blue">925</span>|6k  |124k|1M  |32M |430M|4B  |251B|5T  |
+|2.0|<span class="cell-blue">25</span>|<span class="cell-blue">46</span>|1k |10k |230k|4M  |81M |1B  |15B |1T  |25T |
+|2.1|<span class="cell-blue">28</span>|52|1k |15k |427k|8M  |201M|3B  |48B |3T  |116T|
+|2.2|<span class="cell-blue">30</span>|<span class="cell-blue">60</span>|2k |25k |792k|18M |500M|9B  |157B|15T |546T|
+|2.3|<span class="cell-blue">32</span>|<span class="cell-blue">68</span>|3k |39k |1M  |39M |1B  |28B |509B|63T |2Q  |
+|2.4|<span class="cell-blue">35</span>|76 |5k |63k |2M  |83M |3B  |80B |1T  |251T|11Q |
+|2.5|36|86 |7k |100k|5M  |178M|7B  |229B|5T  |1Q  |55Q |
+|2.6|<span class="cell-blue">40</span>|98 |11k|158k|9M  |382M|19B |652B|17T |3Q  |$\infty$|
+|2.7|<span class="cell-blue">42</span>|112|15k|251k|17M |818M|47B |1T  |55T |15Q |$\infty$|
+|2.8|<span class="cell-red">45</span>|<span class="cell-blue">128</span>|22k|398k|32M |1B  |117B|5T  |178T|63Q |$\infty$|
+|2.9|46|145|32k|630k|59M |3B  |293B|15T |576T|$\infty$|$\infty$|
+|3  |<span class="cell-red">50</span>|<span class="cell-blue">166</span>|46k|1M  |110M|8B  |729B|42T |1Q  |$\infty$|$\infty$|
